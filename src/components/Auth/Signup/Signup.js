@@ -112,7 +112,8 @@ export default function Login() {
                             </Typography>
                         </Grid>
                         <Grid item>
-                            <Button variant="outlined" className={classes.signup} >
+                            <Button variant="outlined" className={classes.signup} 
+                            href="/">
                                 Sign In
                             </Button>
                         </Grid>

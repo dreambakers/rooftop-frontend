@@ -116,7 +116,8 @@ export default function Signup() {
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Button variant="outlined" className={classes.signup} >
+                                <Button variant="outlined" className={classes.signup} 
+                                href="/signup">
                                     Sign Up
                                 </Button>
                             </Grid>
