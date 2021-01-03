@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="74" height="75" viewBox="0 0 74 75">
+  <g id="Group_21" data-name="Group 21" transform="translate(0.236)">
+    <ellipse id="Ellipse_2" data-name="Ellipse 2" cx="37" cy="37.5" rx="37" ry="37.5" transform="translate(-0.236 0)" fill="#d85649"/>
+    <g id="google-glass-logo" transform="translate(21.376 20.822)">
+      <g id="glass" transform="translate(5.576 5.719)">
+        <path id="Path_12" data-name="Path 12" d="M17.783,9.334v2.593H23.9a7.244,7.244,0,0,1-7.156,6.223,7.835,7.835,0,0,1-7.778-7.778,7.835,7.835,0,0,1,7.778-7.778,7.277,7.277,0,0,1,5.393,2.385l1.867-1.867A10.183,10.183,0,0,0,16.746,0a10.371,10.371,0,1,0,0,20.742c5.7,0,9.852-4.667,9.852-10.371V9.334Z" transform="translate(-6.375)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>
