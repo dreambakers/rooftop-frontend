@@ -17,8 +17,10 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
         width: "100%",
-        maxHeight: "100vh",
+        height: "100vh",
         zIndex: "-5",
+        backgroundSize: "100% 100%",
+        objectFit: "cover",
     },
     Button: {
         background: "#FAAF31",
@@ -114,7 +116,7 @@ export default function Signup() {
                         direction="column"
                         justify="center"
                         alignItems="center"
-                        style={{paddingTop:"30%", zIndex:"2", position:"relative"}}
+                        style={{paddingTop:"150px", zIndex:"2", position:"relative"}}
                         >
                             <Grid item>
                                 <Typography variant="h5" style={{FontSize: "40px", color: "white", fontWeight: 700}}>

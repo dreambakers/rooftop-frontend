@@ -12,11 +12,11 @@ import CloseOutlinedIcon from '@material-ui/icons/CloseOutlined';
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: "30%",
+    width: "35%",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
-    padding: theme.spacing(2, 7, 4, 7),
+    padding: theme.spacing(2, 3, 4, 3),
     borderRadius: "20px",
     borderColor: "white",
     outline: "none"
@@ -94,7 +94,7 @@ export default function AddButton() {
       <Paper
         className={classes.paper}
       >
-        <div align="right" style={{marginBottom: "5px"}} >
+        <div align="right" style={{marginLeft: "20px"}} >
             {/* <img src={Close} style={{ width:"15px"}} onClick ={handleClose} /> */}
             <IconButton onClick ={handleClose}>
                     <CloseOutlinedIcon />

@@ -19,14 +19,15 @@ import Rating from "./Rating.js"
 const useStyles = makeStyles((theme) => ({
     image:{
         width: "100%",
-        maxHeight: "100vh",
+        height: "100vh",
         zIndex: "-5",
+        backgroundSize: "100% 100%",
     },
     Paper: {
         marginTop: "20vh",
         padding: theme.spacing(4, 7, 4, 7),
         width: "60%",
-        borderRadius: 12
+        borderRadius: 12,
     },
     Button: {
         background: "#FAAF31",
@@ -36,14 +37,14 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
     },
     social: {
-        width: "1.5vw",
-        padding: theme.spacing(1),
+        width: "15px",
+        padding: theme.spacing(0.5),
     },
     heading: {
         color: "#8A929D"
     },
     list: {
-        width: "2vw",
+        width: "20px",
         margin: theme.spacing(0, 1, -1, 0),
     },
     listText: {
@@ -57,13 +58,13 @@ export default function Event(){
     return(
         <div>
         <Header>
-        <div style={{width: '100%', maxHeight: "100vh",position: "relative"}}>
+        <div style={{width: '100%', height: "100vh",position: "relative"}}>
             <div style = {{position:"absolute", width: '100%', height: "100%", }}>
             <Grid container
             justify="center"
             alignItems="center"
             style={{zIndex:"2", position:"relative"}}>
-                <Grid item lg={7} md={7}>
+                <Grid item lg={7} md={7} xs={12}>
                     <div style={{color:"white", marginLeft: "10vw", marginTop: "10vh"}}>
                         <Typography variant="h4">
                             $30
@@ -75,27 +76,28 @@ export default function Event(){
                             New York Lab | 28 Dec
                         </Typography>
                         <Typography variant="h6">
-                            <img src={Line} style={{width: "2vw", marginBottom: "-30px", marginLeft:"-5px"}}/>
-                            <img src={Pin} style={{width:"1vw", marginRight: "8px"}}/>
+                            <img src={Line} style={{width: "25px", marginBottom: "-30px", marginLeft:"-5px"}}/>
+                            <img src={Pin} style={{width:"15px", marginRight: "8px"}}/>
                             Houston
                         </Typography>
                         <Typography variant="h6">
                             <br />
-                            <img src={House} style={{width:"2vw", marginBottom: "-4px", marginRight: "8px", marginTop:"5px"}}/>
+                            <img src={House} style={{width:"20px", marginBottom: "-4px", marginRight: "8px", marginTop:"5px"}}/>
                             33 Saint Marks Ave
                         </Typography>
                         <Typography variant="h6">
                             <br />
-                            <img src={Distance} style={{width:"2vw", marginBottom: "-4px", marginRight: "8px", marginTop:"5px"}}/>
+                            <img src={Distance} style={{width:"20px", marginBottom: "-4px", marginRight: "8px", marginTop:"5px"}}/>
                             You're 2km away from the party
                         </Typography>
                     </div>
 
                 </Grid>
 
-                <Grid item lg={5} md={5}>
+                <Grid item lg={5} md={5} xs={12}>
+                <div align="center">
                 <Paper className={classes.Paper}>
-                    <div>
+                    <div align="left">
                         <div align="right">
                             <img src={instagram} className={classes.social} />
                             <img src={twitter} className={classes.social} />
@@ -143,6 +145,7 @@ export default function Event(){
                     </div>
                     </div>
                 </Paper>
+                </div>
                 </Grid>
             </Grid>
             

@@ -15,12 +15,13 @@ const useStyles = makeStyles((theme) => ({
     Paper: {
         position: "absolute",
         width: "43%",
-        height:"64%",
+        //height:"64vh",
         left: "50%",
         top: "50%",
         transform: "translate(-50%, -50%)",
         outline: "none",
         borderRadius: "20px",
+        padding: theme.spacing(2)
     },
     heading: {
         FontSize: "40px",
@@ -132,7 +133,7 @@ export default function ForgotPassword() {
                 /> 
                 <Button variant="outlined" className={classes.Button} onClick ={onSendClick}>
                     Send 
-                    <img src={Send} style={{marginLeft:"5px", width:"1.1vw"}}/>
+                    <img src={Send} style={{marginLeft:"5px", width:"16px"}}/>
                 </Button>
             </div>
         </Paper>
@@ -140,7 +141,7 @@ export default function ForgotPassword() {
     
     const body1 = (
         //height = 42%  width = 43%
-        <Paper className={classes.Paper} style ={{height: "42%"}}>
+        <Paper className={classes.Paper}>
             <div align="right" style={{margin: "5px"}}>
                 {/* <img src={Close} style={{ width:"1vw"}} onClick ={onCloseClick} /> */}
                 <IconButton onClick ={onCloseClick}>
@@ -150,7 +151,7 @@ export default function ForgotPassword() {
             <div style={{ margin: "5%"}}>
                 <Typography variant = "h4" className = {classes.heading}>
                     Reset link sent to your email
-                    <img src = {SendTick} style ={{marginLeft: "20px", width: "3vw"}}/>
+                    <img src = {SendTick} style ={{marginLeft: "20px", width: "20px"}}/>
                 </Typography>
                 <Typography variant = "body2" className = {classes.body} >
                     Please check your inbox and click on the link to rest your password

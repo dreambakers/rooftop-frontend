@@ -11,8 +11,10 @@ const useStyles = makeStyles((theme) => ({
     },
     image: {
         width: "100%",
-        maxHeight: "100vh",
-        zIndex: "-5"
+        height: "100vh",
+        zIndex: "-5",
+        backgroundSize: "100% 100%",
+        objectFit: "cover",
     },
     Button: {
         background: "#FAAF31",
@@ -64,7 +66,7 @@ export default function Login() {
             lg={7} md={7}>
                 <Grid item className={classes.form} >
                     <Typography variant = "h4" align="center" style = {{fontFamily: "EuclidCircularB", fontWeight: 900}}>Fun made easy, join to discover parties in NYC</Typography>
-                    <Typography variant = "body2">Username</Typography> <br />
+                    <Typography variant = "body2" style={{paddingTop: "15px"}}>Username</Typography> <br />
                     <TextField variant = "outlined" 
                     placeholder = "Type your username here"
                     className={classes.text}

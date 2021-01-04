@@ -11,7 +11,8 @@ const useStyles = makeStyles((theme) => ({
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
         background: "white",
-        height: "15vh"
+        height: "15vh",
+        width: "100%"
       },
     grow: {
         flexGrow: 1,
