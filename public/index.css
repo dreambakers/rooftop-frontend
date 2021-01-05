@@ -1,0 +1,13 @@
+@font-face {
+    font-family: EuclidCircularB-Bold;
+    src: local('EuclidCircularB'), url('./assets/Fonts/EuclidCircularB-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: EuclidCircularB;
+    src: local('EuclidCircularB'), url('./assets/Fonts/EuclidCircularB-Rgular.ttf') format('truetype');
+}
+
+* {
+    font-family: EuclidCircularB, sans-serif;
+}
