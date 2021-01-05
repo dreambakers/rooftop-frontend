@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        token: ${{ ACCESS_TOKEN }}
+        token: ${{ secrets.ACCESS_TOKEN }}
 
     - name: Deploy react app to github pages
       uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
