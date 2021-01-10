@@ -1,8 +1,7 @@
-import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Switch from "@material-ui/core/Switch";
 
 const IOSSwitch = withStyles((theme) => ({
   root: {
@@ -13,18 +12,18 @@ const IOSSwitch = withStyles((theme) => ({
   },
   switchBase: {
     padding: 1,
-    '&$checked': {
-      transform: 'translateX(16px)',
+    "&$checked": {
+      transform: "translateX(16px)",
       color: theme.palette.common.white,
-      '& + $track': {
-        backgroundColor: '#FAAF31',
+      "& + $track": {
+        backgroundColor: "#FAAF31",
         opacity: 1,
-        border: 'none',
+        border: "none",
       },
     },
-    '&$focusVisible $thumb': {
-      color: '#52d869',
-      border: '6px solid #fff',
+    "&$focusVisible $thumb": {
+      color: "#52d869",
+      border: "6px solid #fff",
     },
   },
   thumb: {
@@ -36,7 +35,7 @@ const IOSSwitch = withStyles((theme) => ({
     border: `1px solid ${theme.palette.grey[400]}`,
     backgroundColor: theme.palette.grey[50],
     opacity: 1,
-    transition: theme.transitions.create(['background-color', 'border']),
+    transition: theme.transitions.create(["background-color", "border"]),
   },
   checked: {},
   focusVisible: {},
@@ -57,7 +56,6 @@ const IOSSwitch = withStyles((theme) => ({
   );
 });
 
-
 export default function CustomizedSwitches() {
   const [state, setState] = React.useState({
     checked: true,
@@ -68,8 +66,14 @@ export default function CustomizedSwitches() {
   };
 
   return (
-      <FormControlLabel
-        control={<IOSSwitch checked={state.checked} onChange={handleChange} name="checked" />}
-      />
+    <FormControlLabel
+      control={
+        <IOSSwitch
+          checked={state.checked}
+          onChange={handleChange}
+          name="checked"
+        />
+      }
+    />
   );
 }
