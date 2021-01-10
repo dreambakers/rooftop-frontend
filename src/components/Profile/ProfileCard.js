@@ -3,6 +3,8 @@ import DP from "../../assets/Image/dp.png";
 import {Grid, Typography, makeStyles, Avatar, Divider} from '@material-ui/core';
 import FireIcon from "../../assets/Icons/Mask Group 17.svg";
 import Checked from "../../assets/Icons/checked.svg";
+import Edit from "../../assets/Icons/edit.svg";
+import EditPicture from "../../assets/Icons/EditPicture.svg";
 
 const useStyles = makeStyles((theme) => ({
     profile:{
@@ -46,6 +48,7 @@ export default function ProfileCard() {
     return(
                         <div className = {classes.profile} align= "center">
                             <Avatar src = {DP} style = { {width: "100px",height: "100px"}}/>
+                            <img src={EditPicture} style={{width:"35px", marginLeft: "15%", marginTop: "-25%", zIndex: "2", position: "relative"}} />
                             <Typography variant = "h6" style = {{fontSize: "22px", marginTop: "5%"}}>
                                 Kai Moorer
                             </Typography>
@@ -74,6 +77,9 @@ export default function ProfileCard() {
                                         Dalton '19<br />
                                         NYU '23<br />
                                         YKTV
+                                        <div align="right">
+                                            <img src={Edit} />
+                                        </div>
                                     </Typography>
                                 </div>
                                 <div style = {{width: "100%"}} align = "left">

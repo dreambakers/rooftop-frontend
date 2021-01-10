@@ -2,7 +2,8 @@ import React from 'react';
 import Logo from "../../assets/Icons/Icon.svg";
 import {Grid, Typography, makeStyles, Button, TextField, Slider, Switch, FormControlLabel} from '@material-ui/core';
 import ProfileCard from "./ProfileCard";
-import EditForm from "./EditForm";import Footer from "../Navigation/Footer/Footer";
+import EditForm from "./EditForm";
+import Footer from "../Navigation/Footer/Footer";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,6 +25,7 @@ export default function Edit() {
                 <Grid container
                 justify="space-evenly"
                 alignItems="flex-start"
+                style={{paddingBottom: "25px"}}
                 >
                     <Grid item xs={10} sm={10} md={3} lg={3}>
                         <ProfileCard />

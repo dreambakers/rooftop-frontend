@@ -1,5 +1,6 @@
 import React from 'react';
-import {Typography, makeStyles, Button, TextField, Slider, Switch, FormControlLabel} from '@material-ui/core';
+import {Typography, makeStyles, Button, TextField, Slider} from '@material-ui/core';
+import SwitchCustom from "./Switch";
 
 const useStyles = makeStyles((theme) => ({
     Button: {
@@ -173,15 +174,7 @@ export default function CreateForm() {
                                     Crowd Caution
                                 </Typography>
 
-                                <FormControlLabel
-                                    control={
-                                      <Switch
-                                      checked={state.checked}
-                                      onChange={handleChange}
-                                      color="primary"
-                                    />
-                                    }
-                                />
+                                <SwitchCustom />
 
                                 <Typography variant="subtitle2">
                                     Price

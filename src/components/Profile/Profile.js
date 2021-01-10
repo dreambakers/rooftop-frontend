@@ -1,64 +1,19 @@
 import React from 'react';
 import Logo from "../../assets/Icons/Icon.svg";
-import {Grid, Typography, makeStyles, Button, Divider} from '@material-ui/core';
+import {Grid, Typography, makeStyles} from '@material-ui/core';
 import ProfileCard from "./ProfileCard";
+import Footer from "../Navigation/Footer/Footer";
+import PartyDisplay from "./PartyDisplay";
 
 const useStyles = makeStyles((theme) => ({
-    profileGrid:{
-        margin: theme.spacing(0,0,0,5),
-        backgroundColor: "white",
-        borderRadius: "20px",
-    },
-    profile:{
-        height: "100%",
-        width: "100%",
-        alignContent: "center",
-        alignItems: "center",
-        borderBottomColor: "#F7F8FC"
-    },
-    myParties: {
-        padding: theme.spacing(10),
-        width: "70%"
-
-    },
-    bio:{
-        backgroundColor: "#FFF6EB", 
-        padding: theme.spacing(2),
-        borderRadius: "10px",
-        color: "#8A929D"
-    },
-    profileText:{
-        color: "#8A929D", 
-        textDecoration: "underline", 
-        marginTop: "3%"
-    },
-    Button: {
-        background: "#FAAF31",
-        borderColor: "#FAAF31",
-        margin: theme.spacing(2, 0, 2, 0),
-        color: "white",
-        // width:  "250px",
-        // height: "70px",
-        '&:hover': {
-            background: "#FAAF31",
-            borderColor: "#FFFFFF"
-        }
-    },
-}));
+}))
 
 export default function Profile() {
     const classes = useStyles();
 
 
     return(
-            <Grid container 
-            direction = "column"
-            alignItems = "stretch"
-            justify = "flex-start"    
-            >
-            <div style = {{width:"100%",backgroundColor: "#F7F8FC", height: "100vh", position: "absolute"}}>
-            </div>
-            <div style={{position: "relative"}}>
+            <div style={{position: "relative", width:"100%",backgroundColor: "#F7F8FC"}}>
                 {/* Logo */}
                 <Grid container justify = "flex-end">
                     <Grid item >
@@ -66,12 +21,20 @@ export default function Profile() {
                     </Grid>
                 </Grid>
                 {/* Body  */}
-                <Grid container direction = "row">
-                    <ProfileCard />
-                    <Grid item >
+                <Grid container
+                justify="space-evenly"
+                alignItems="flex-start"
+                style={{paddingBottom: "25px"}}
+                >
+                    <Grid item xs={10} sm={10} md={3} lg={3}>
+                        <ProfileCard />
+                    </Grid>
+                    <Grid item lg={8} sm={10} md={8} xs={10}>
+                        <PartyDisplay />
                     </Grid>
                 </Grid>
-            </div>
-            </Grid>
+                <Footer />
+                </div>
+
     )
 }
