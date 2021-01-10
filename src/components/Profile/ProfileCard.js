@@ -5,18 +5,14 @@ import FireIcon from "../../assets/Icons/Mask Group 17.svg";
 import Checked from "../../assets/Icons/checked.svg";
 
 const useStyles = makeStyles((theme) => ({
-    profileGrid:{
-        margin: theme.spacing(0,7,0,7),
-        padding: theme.spacing(2,0,2,0),
-        backgroundColor: "white",
-        borderRadius: "20px",
-        height: "40%"
-    },
     profile:{
         width: "100%",
         alignContent: "center",
         alignItems: "center",
-        borderBottomColor: "#F7F8FC"
+        borderBottomColor: "#F7F8FC",
+        backgroundColor: "white",
+        padding: theme.spacing(2,0,2,0),
+        borderRadius: "20px",
     },
     bio:{
         backgroundColor: "#FFF6EB", 
@@ -48,7 +44,6 @@ export default function ProfileCard() {
 
 
     return(
-                    <Grid item className={classes.profileGrid} lg={3} xs={12}>
                         <div className = {classes.profile} align= "center">
                             <Avatar src = {DP} style = { {width: "100px",height: "100px"}}/>
                             <Typography variant = "h6" style = {{fontSize: "22px", marginTop: "5%"}}>
@@ -101,6 +96,5 @@ export default function ProfileCard() {
                                 </div>
                             </div>
                             </div>
-                    </Grid>
     )
 }

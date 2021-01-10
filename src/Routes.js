@@ -60,6 +60,12 @@ const routes = [
     path: "/create",
     component: lazy(() => import("./components/Profile/Create")),
   },
+  {
+    exact: true,
+    //guard: GuestGuard,
+    path: "/edit",
+    component: lazy(() => import("./components/Profile/Edit")),
+  },
 ];
 
 export default routes;
