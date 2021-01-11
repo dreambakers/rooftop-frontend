@@ -23,7 +23,7 @@ export default function Profile() {
 
   return (
     <div className={classes.back}>
-      <div>
+      <div style ={{minHeight: "100vh"}}>
         {/* Logo */}
         <Grid container justify="space-between">
           <Grid item>
@@ -52,7 +52,7 @@ export default function Profile() {
           </Grid>
         </Grid>
       </div>
-      <div style={{ position: "absolute", width: "100%" }}>
+      <div style={{ width: "100%" }}>
         <Footer />
       </div>
     </div>

@@ -23,7 +23,8 @@ const useStyles = makeStyles((theme) => ({
   },
   Paper: {
     position: "absolute",
-    width: "65%",
+    minWidth: "300px",
+    maxWidth: "500px",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",

@@ -148,7 +148,7 @@ export default function EditForm() {
               width: "90%",
               align: "center",
               justifyItems: "align",
-              marginLeft: "10px",
+              marginLeft: "25px",
             }}
           />
 

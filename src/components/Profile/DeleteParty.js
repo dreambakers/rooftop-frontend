@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, Grid } from "@material-ui/core";
 import DeleteOutlineOutlinedIcon from "@material-ui/icons/DeleteOutlineOutlined";
 import {
   Paper,
@@ -13,7 +13,8 @@ import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: "60%",
+    maxWidth: "800px",
+    minWidth: "300px",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
@@ -31,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
     background: "#FAAF31",
     borderColor: "#FAAF31",
     color: "white",
-    width: "42%",
-    margin: theme.spacing(2),
+    width: "90%",
+    margin: theme.spacing(2, 0, 2, 0),
     padding: theme.spacing(1),
     "&:hover": {
       background: "#FAAF31",
@@ -68,28 +69,46 @@ export default function DeleteParty() {
         <Typography variant="h4" style={{ fontWeight: "700" }}>
           Are you sure you want to delete this party?
         </Typography>
-        <div style={{ width: "100%" }}>
-          <Button variant="outlined" className={classes.button}>
-            Yes
-          </Button>
-          <Button
-            variant="outlined"
-            className={classes.button}
-            style={{ backgroundColor: "red" }}
-          >
-            No
-          </Button>
-        </div>
+        <Grid
+          container
+          alignItems="center"
+          justify="space-between"
+          style={{ width: "100%" }}
+        >
+          <Grid item sm={6} lg={6} md={6} xs={6}>
+            <Button variant="outlined" className={classes.button}>
+              Yes
+            </Button>
+          </Grid>
+          <Grid item sm={6} lg={6} md={6} xs={6}>
+            <Button
+              variant="outlined"
+              className={classes.button}
+              style={{ backgroundColor: "red" }}
+            >
+              No
+            </Button>
+          </Grid>
+        </Grid>
       </div>
     </Paper>
   );
 
   return (
     <div>
-      <DeleteOutlineOutlinedIcon
-        style={{ color: "red" }}
-        onClick={handleOpen}
-      />
+      <IconButton style={{ padding: "2px" }}>
+        <DeleteOutlineOutlinedIcon
+          style={{
+            backgroundColor: "#FFE6E2",
+            left: "20%",
+            borderRadius: "15%",
+            color: "red",
+            width: "30px",
+            height: "35px",
+          }}
+          onClick={handleOpen}
+        />
+      </IconButton>
 
       <Modal open={open} onClose={handleClose} className={classes.modal}>
         {body}

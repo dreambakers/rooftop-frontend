@@ -19,7 +19,8 @@ import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
-    width: "260px",
+    maxWidth: "500px",
+    minWidth: "260px",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
@@ -102,14 +103,17 @@ export default function AddButton() {
         </IconButton>
       </div>
       <Slider
-        defaultValue={15}
+        defaultValue={35}
         getAriaValueText={valuetext}
         aria-labelledby="discrete-slider-custom"
-        step={10}
-        valueLabelDisplay="auto"
+        step={35}
+        valueLabelDisplay="off"
         marks={marks}
         className={classes.slide}
+        min={0}
+        max={100}
       />
+
       <Button variant="contained" className={classes.Button}>
         Confirm
       </Button>

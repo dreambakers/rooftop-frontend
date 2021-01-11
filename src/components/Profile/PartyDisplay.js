@@ -96,7 +96,7 @@ export default function PartyDisplay() {
             backgroundColor: "#FFEAC5",
             color: "#EB9700",
             borderColor: "#FFEAC5",
-            marginLeft: "6%",
+            marginLeft: "5.5%",
           }}
         >
           Load more parties

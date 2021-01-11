@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, Button, Typography, IconButton } from "@material-ui/core";
+import { makeStyles, Typography, IconButton, Grid } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import DeleteParty from "./DeleteParty";
@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     color: "black",
     borderRadius: "5px",
     margin: theme.spacing(3),
-    padding: "3px",
+    padding: theme.spacing(0.5, 1, 0.5, 0.5),
   },
   image: {
     width: "100%",
@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     bottom: "5%",
     position: "absolute",
     left: "7%",
-    borderRadius: "5px",
+    borderRadius: "10px",
     padding: "5px",
   },
   locationDiv: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     right: "5%",
     bottom: "-3%",
     backgroundColor: "#FAAF31",
-    borderRadius: "5px",
+    borderRadius: "3px",
   },
   detailsDiv: {
     padding: theme.spacing(3),
@@ -83,21 +83,25 @@ export default function PartyCard(props) {
               <b>{props.review}</b>
             </Typography>
           </div>
-          <div
-            style={{ backgroundColor: "#FFF9DD" }}
-            className={classes.actionIcons}
-          >
-            <IconButton style={{ padding: "1.5px" }} href="/edit">
-              <EditIcon style={{ color: "#FAAF31" }} />{" "}
-              {/* On click should open edit party page */}
-            </IconButton>
-          </div>
-          <div
-            className={classes.actionIcons}
-            style={{ backgroundColor: "#FFE6E2", left: "20%" }}
-          >
-            <DeleteParty />
-          </div>
+          <Grid container className={classes.actionIcons}>
+            <Grid item>
+              <IconButton style={{ padding: "2px" }} href="/edit">
+                <EditIcon
+                  style={{
+                    color: "#FAAF31",
+                    backgroundColor: "#FFF9DD",
+                    width: "30px",
+                    height: "35px",
+                    borderRadius: "15%",
+                  }}
+                />{" "}
+                {/* On click should open edit party page */}
+              </IconButton>
+            </Grid>
+            <Grid item>
+              <DeleteParty />
+            </Grid>
+          </Grid>
           <div className={classes.locationDiv}>
             <Typography variant="body1">
               <LocationOnIcon className={classes.icon} />
