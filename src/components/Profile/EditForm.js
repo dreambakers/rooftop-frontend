@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(5, 5, 5, 5),
     backgroundColor: "white",
     borderRadius: "20px",
+    fontWeight: "600",
   },
   image: {
     background: "#FFFDFA",
@@ -84,7 +85,10 @@ export default function EditForm() {
           <div className={classes.image} align="center">
             <Button className={classes.Button}>Upload an image</Button>
           </div>
-          <Typography variant="subtitle2" style={{ paddingTop: "2%" }}>
+          <Typography
+            variant="subtitle2"
+            style={{ paddingTop: "2%", fontWeight: "600" }}
+          >
             Title
           </Typography>
           <TextField
@@ -93,7 +97,9 @@ export default function EditForm() {
             placeholder="Enter party title"
             style={{ marginBottom: "5%", marginTop: "2%" }}
           />
-          <Typography variant="body2">Borough</Typography>
+          <Typography variant="body2" style={{ fontWeight: "600" }}>
+            Borough
+          </Typography>
 
           <div style={{ marginBottom: "5%" }}>
             <Button variant="outlined" className={classes.button}>
@@ -113,14 +119,18 @@ export default function EditForm() {
             </Button>
           </div>
 
-          <Typography variant="subtitle2">Location</Typography>
+          <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
+            Location
+          </Typography>
           <TextField
             variant="outlined"
             className={classes.text}
             placeholder="Enter party location"
             style={{ marginBottom: "5%", marginTop: "2%" }}
           />
-          <Typography variant="body2">Vibe</Typography>
+          <Typography variant="body2" style={{ fontWeight: "600" }}>
+            Vibe
+          </Typography>
 
           <div style={{ marginBottom: "5%" }}>
             <Button variant="outlined" className={classes.button}>
@@ -134,7 +144,9 @@ export default function EditForm() {
             </Button>
           </div>
 
-          <Typography variant="subtitle2">Size of venue</Typography>
+          <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
+            Size of venue
+          </Typography>
 
           <Slider
             defaultValue={20}
@@ -152,7 +164,9 @@ export default function EditForm() {
             }}
           />
 
-          <Typography variant="subtitle2">Crowd control</Typography>
+          <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
+            Crowd control
+          </Typography>
 
           <div style={{ marginBottom: "5%" }}>
             <Button variant="outlined" className={classes.button}>
@@ -169,7 +183,9 @@ export default function EditForm() {
             </Button>
           </div>
 
-          <Typography variant="subtitle2">Crowd Caution</Typography>
+          <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
+            Crowd Caution
+          </Typography>
 
           <SwitchCustom />
 
@@ -182,7 +198,9 @@ export default function EditForm() {
             style={{ marginBottom: "5%", marginTop: "2%" }}
           />
 
-          <Typography variant="subtitle2">About</Typography>
+          <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
+            About
+          </Typography>
 
           <TextField
             variant="outlined"
@@ -191,7 +209,9 @@ export default function EditForm() {
             style={{ marginBottom: "5%", marginTop: "2%" }}
           />
 
-          <Typography variant="subtitle2">Party Type</Typography>
+          <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
+            Party Type
+          </Typography>
 
           <div>
             <Button variant="outlined" className={classes.button}>

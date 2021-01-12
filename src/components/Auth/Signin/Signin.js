@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
   label: {
     marginBottom: "-20px",
+    fontWeight: "600",
   },
   image: {
     width: "100%",
@@ -58,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo: {
     height: "95px",
-    zIndex: "9999",
+    zIndex: "5",
     position: "relative",
   },
   icons: {
@@ -85,7 +86,7 @@ export default function Signup() {
             align="center"
             style={{
               fontFamily: "EuclidCircularB",
-              fontWeight: 900,
+              fontWeight: "600",
               marginTop: "5%",
             }}
           >
@@ -96,7 +97,11 @@ export default function Signup() {
             <img src={Google} className={classes.icons}></img>
             <Typography
               variant="subtitle2"
-              style={{ color: "#8A929D", paddingTop: "20px" }}
+              style={{
+                color: "#8A929D",
+                paddingTop: "20px",
+                fontWeight: "600",
+              }}
             >
               {" "}
               or sign in with your email

@@ -23,14 +23,14 @@ const useStyles = makeStyles((theme) => ({
   },
   Paper: {
     position: "absolute",
-    minWidth: "300px",
+    minWidth: "270px",
     maxWidth: "500px",
     left: "50%",
     top: "50%",
     transform: "translate(-50%, -50%)",
     outline: "none",
     borderRadius: "20px",
-    padding: theme.spacing(0),
+    padding: theme.spacing(2),
   },
   heading: {
     FontSize: "40px",
@@ -133,7 +133,9 @@ export default function ForgotPassword() {
           password
         </Typography>
         <br />
-        <Typography variant="body2">Email Address</Typography>
+        <Typography variant="body2" style={{ fontWeight: "600" }}>
+          Email Address
+        </Typography>
         <TextField
           variant="outlined"
           placeholder="Type your email address here"
@@ -164,7 +166,7 @@ export default function ForgotPassword() {
       <div style={{ margin: "5%" }}>
         <Typography variant="h4" className={classes.heading}>
           Reset link sent to your email
-          <img src={SendTick} style={{ marginLeft: "20px", width: "20px" }} />
+          <img src={SendTick} style={{ paddingLeft: "5px", width: "20px" }} />
         </Typography>
         <Typography variant="body2" className={classes.body}>
           Please check your inbox and click on the link to rest your password
@@ -193,7 +195,10 @@ export default function ForgotPassword() {
         <Typography variant="h4" className={classes.heading}>
           Create a new password
         </Typography>
-        <Typography variant="body2">Create a password</Typography> <br />
+        <Typography variant="body2" style={{ fontWeight: "600" }}>
+          Create a password
+        </Typography>{" "}
+        <br />
         <TextField
           variant="outlined"
           placeholder="Type your password here"
@@ -201,7 +206,10 @@ export default function ForgotPassword() {
           style={{ marginTop: "2%" }}
         />
         <br />
-        <Typography variant="body2">Confirm password</Typography> <br />
+        <Typography variant="body2" style={{ fontWeight: "600" }}>
+          Confirm password
+        </Typography>{" "}
+        <br />
         <TextField
           variant="outlined"
           placeholder="Type your password here"

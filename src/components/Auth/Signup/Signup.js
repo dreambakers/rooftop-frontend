@@ -81,7 +81,10 @@ export default function Login() {
           >
             Fun made easy, join to discover parties in NYC
           </Typography>
-          <Typography variant="body2" style={{ paddingTop: "15px" }}>
+          <Typography
+            variant="body2"
+            style={{ paddingTop: "15px", fontWeight: "600" }}
+          >
             Username
           </Typography>{" "}
           <br />
@@ -92,7 +95,10 @@ export default function Login() {
             style={{ marginTop: "0%" }}
           />
           <br />
-          <Typography variant="body2">Email address</Typography> <br />
+          <Typography variant="body2" style={{ fontWeight: "600" }}>
+            Email address
+          </Typography>{" "}
+          <br />
           <TextField
             variant="outlined"
             placeholder="Type your email address here"
@@ -100,7 +106,10 @@ export default function Login() {
             style={{ marginTop: "0%" }}
           />
           <br />
-          <Typography variant="body2">Create a password</Typography> <br />
+          <Typography variant="body2" style={{ fontWeight: "600" }}>
+            Create a password
+          </Typography>{" "}
+          <br />
           <TextField
             variant="outlined"
             placeholder="Type your password here"
@@ -108,7 +117,10 @@ export default function Login() {
             style={{ marginTop: "0%" }}
           />
           <br />
-          <Typography variant="body2">Confirm password</Typography> <br />
+          <Typography variant="body2" style={{ fontWeight: "600" }}>
+            Confirm password
+          </Typography>{" "}
+          <br />
           <TextField
             variant="outlined"
             placeholder="Type your password here"
