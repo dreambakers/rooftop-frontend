@@ -45,8 +45,26 @@ const routes = [
   {
     exact: true,
     //guard: GuestGuard,
-    path: "/event",
-    component: lazy(() => import("./components/Event/Event")),
+    path: "/party",
+    component: lazy(() => import("./components/Party/Party")),
+  },
+  {
+    exact: true,
+    //guard: GuestGuard,
+    path: "/profile",
+    component: lazy(() => import("./components/Profile/Profile")),
+  },
+  {
+    exact: true,
+    //guard: GuestGuard,
+    path: "/create",
+    component: lazy(() => import("./components/Profile/Create")),
+  },
+  {
+    exact: true,
+    //guard: GuestGuard,
+    path: "/edit",
+    component: lazy(() => import("./components/Profile/Edit")),
   },
 ];
 
