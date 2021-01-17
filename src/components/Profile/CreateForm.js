@@ -7,6 +7,7 @@ import {
   Slider,
 } from "@material-ui/core";
 import SwitchCustom from "./Switch";
+import DownloadApp from './DownloadApp';
 
 const useStyles = makeStyles((theme) => ({
   Button: {
@@ -230,6 +231,7 @@ export default function CreateForm() {
             Create Party
           </Button>
         </div>
+        <DownloadApp />
       </Typography>
     </div>
   );

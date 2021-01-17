@@ -3,8 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import LoadingScreen from "./components/LoadingScreen";
 
 export const renderRoutes = (routes = []) => (
-
-<Suspense fallback={<LoadingScreen />}>
+  <Suspense fallback={<LoadingScreen />}>
     <Switch>
       {routes.map((route, i) => {
         //const Guard = route.guard || Fragment;
@@ -65,6 +64,12 @@ const routes = [
     //guard: GuestGuard,
     path: "/edit",
     component: lazy(() => import("./components/Profile/Edit")),
+  },
+  {
+    exact: true,
+    //guard: GuestGuard,
+    path: "/home",
+    component: lazy(() => import("./components/Home/Home")),
   },
 ];
 
