@@ -148,7 +148,7 @@ export default function NewHome() {
                 }}
                 inputProps={{ "aria-label": "search" }}
                 style={{ width: "70%" }}
-                
+                fullWidth="true"
               />
             </div>
             <div align="right">

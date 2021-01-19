@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 import SignupImage from "../../../assets/Image/Signup.png";
 import Logo from "../../../assets/Icons/Icon.svg";
 import Facebook from "../../../assets/Icons/Facebook.svg";
@@ -12,7 +11,13 @@ import {
   Button,
 } from "@material-ui/core";
 import ForgotPassword from "./ForgotPassword.js";
+import {login, googleAuth, facebookAuth} from "../../connectApi/axiosFunctions"
 
+// login("Test","test123")
+// sendSignupVE('valid@email.com')
+// changePass('test123','test1234')
+// getProfile()
+// updateProfile('test123', "profilePicture=@/home/mhd3v/Downloads/ProGrid (2).png", "Musician", 'validurl.com', 'validurl.com', 'validurl.com', 'validurl.com', 'validurl.com')
 const useStyles = makeStyles((theme) => ({
   form: {
     padding: theme.spacing(0),
@@ -69,44 +74,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 export default function Signup(props) {
   const classes = useStyles();
-  
+
   const [username, setUserName] = React.useState("");
   const [password, setPassword] = React.useState("");
   const {history} = props;
-  
-  
-
-  const onChangeUsername = (val) => {
-    setUserName(val.target.value); //set value to target in text field
-  }
-
-  const onChangePassword = (val) => {
-    setPassword(val.target.value); //set value to target in text field
-  }
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const URL = "https://rooftop-api.herokuapp.com/auth/login/";
-    
-    const user = {
-      "username": username,
-      "password": password
-    };
-
-
-    axios.post(URL, user)
-          .then(response => {
-            console.log(response)
-            history.push("/home")
-          })
-          .catch(e => console.log(e));
-
-  
-}
 
   return (
     <Grid container justify="center" alignItems="center">
@@ -131,8 +104,12 @@ export default function Signup(props) {
             Welcome, Sign in and turn up!
           </Typography>
           <div align="center" style={{ marginTop: "40px" }}>
-            <img src={Facebook} className={classes.icons}></img>
-            <img src={Google} className={classes.icons}></img>
+            <img src={Facebook} className={classes.icons}
+            onClick = {facebookAuth}
+            ></img>
+            <img src={Google} className={classes.icons}
+            onClick = {googleAuth}
+            ></img>
             <Typography
               variant="subtitle2"
               style={{
@@ -156,12 +133,12 @@ export default function Signup(props) {
             className={classes.text}
             style={{ marginTop: "2%" }}
             value = {username}
-            onChange={onChangeUsername}
+            onChange = {(val) => setUserName(val.target.value)}
           />
           <br />
           <Typography variant="body2" className={classes.label}>
             Password
-          </Typography> 
+          </Typography>{" "}
           <br />
           <div align="right" style={{ marginTop: "-20px" }}>
             <ForgotPassword style={{ marginTop: "-20px" }} />
@@ -172,12 +149,17 @@ export default function Signup(props) {
             className={classes.text}
             style={{ marginTop: "2%" }}
             value = {password}
-            onChange={onChangePassword}
+            onChange = {(val) => setPassword(val.target.value)}
           />
           <br />
           <Grid item>
             <div align="center">
-              <Button variant="outlined" className={classes.Button} onClick = {onSubmit}>
+              <Button variant="outlined" className={classes.Button} 
+              onClick={(e,userName={username},Password={password}) => {
+                  login(userName,Password)
+                  history.push("/home")
+                }
+              }>
                 Sign In
               </Button>
             </div>
@@ -220,7 +202,7 @@ export default function Signup(props) {
                 <Button
                   variant="outlined"
                   className={classes.signup}
-                  href="/signup"
+                  href="/signup"                  
                 >
                   Sign Up
                 </Button>
