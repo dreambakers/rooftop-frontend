@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import {
   Typography,
   makeStyles,
@@ -55,6 +56,19 @@ const useStyles = makeStyles((theme) => ({
 export default function CreateForm() {
   const classes = useStyles();
 
+  const startDateTime = "2021-01-30 16:47:30";
+  const endDateTime = "2021-01-01 13:47:30";
+  const [title, setTitle] = React.useState("");
+  const [location, setLocation] = React.useState("");
+  const [borough, setBorough] = React.useState("");
+  const [vibe, setVibe] = React.useState("");
+  const [size, setSize] = React.useState(20);
+  const [crowd, setCrowd] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [about, setAbout] = React.useState("");
+  const[control, setControl] = React.useState(true);
+  const [type, setType] = React.useState("");
+
   function valuetext(value) {
     return value;
   }
@@ -78,6 +92,42 @@ export default function CreateForm() {
     },
   ];
 
+  const onBoroughClick = (val) => {
+    setBorough(val.target.value);
+  }
+  const onVibeClick = (val) => {
+    setVibe(val.target.value);
+  }
+  const onCrowdClick = (val) => {
+    setCrowd(val.target.value);
+  }
+  const onTypeClick = (val) => {
+    setType(val.target.value);
+  }
+
+  const onCreateClick = () => {
+    const URL = "https://rooftop-api.herokuapp.com/party/"
+
+    const party = {
+      "title": title,
+      "location": location,
+      "borough":borough,
+      "price":price,
+      "about": about,
+      "vibe": vibe,
+      "crowdControl": crowd,
+      "crowdCaution": control,
+      "venueSize" : size,
+      "endDateTime":endDateTime,
+      "startDateTime": startDateTime
+    }
+
+    axios.post(URL, party)
+    .then (res => {
+      console.log(res)
+    })
+    .catch(e => console.log(e))
+  }
   return (
     <div className={classes.form}>
       <Typography variant="subtitle1" style={{ fontSize: "40px" }}>
@@ -97,25 +147,29 @@ export default function CreateForm() {
             className={classes.text}
             placeholder="Enter party title"
             style={{ marginBottom: "5%", marginTop: "2%" }}
+            value = {title}
+            onChange={(val) =>{
+              setTitle(val.target.value);
+            }}
           />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
             Borough
           </Typography>
 
           <div style={{ marginBottom: "5%" }}>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Queens" onClick = {onBoroughClick}>
               Queens
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Bronx" onClick= {onBoroughClick}>
               Bronx
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Brooklyn" onClick = {onBoroughClick}>
               Brooklyn
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Manhattan" onClick = {onBoroughClick}>
               Manhattan
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Long Island" onClick = {onBoroughClick}>
               Long Island
             </Button>
           </div>
@@ -128,19 +182,23 @@ export default function CreateForm() {
             className={classes.text}
             placeholder="Enter party location"
             style={{ marginBottom: "5%", marginTop: "2%" }}
+            value = {location}
+            onChange= {(val) => {
+              setLocation(val.target.value);
+            }}
           />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
             Vibe
           </Typography>
 
           <div style={{ marginBottom: "5%" }}>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Turnt Up" onClick={onVibeClick}>
               Turnt Up
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Mixer" onClick = {onVibeClick}>
               Mixer
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Kickback" onClick = {onVibeClick}>
               Kickback
             </Button>
           </div>
@@ -154,15 +212,19 @@ export default function CreateForm() {
             getAriaValueText={valuetext}
             aria-labelledby="discrete-slider-custom"
             step={500}
+            min = {100}
+            max = {10000}
             valueLabelDisplay="auto"
             marks={marks}
             className={classes.slide}
+            
             style={{
               width: "90%",
               align: "center",
               justifyItems: "align",
               marginLeft: "25px",
             }}
+           
           />
 
           <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
@@ -170,16 +232,16 @@ export default function CreateForm() {
           </Typography>
 
           <div style={{ marginBottom: "5%" }}>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Moshpit" onClick = {onCrowdClick}>
               Moshpit
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Packed" onClick = {onCrowdClick}>
               Packed
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Spaced" onClick = {onCrowdClick}>
               Spaced
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Alot Spaced" onClick = {onCrowdClick}>
               Alot Spaced
             </Button>
           </div>
@@ -197,6 +259,10 @@ export default function CreateForm() {
             className={classes.text}
             placeholder="Enter price for party"
             style={{ marginBottom: "5%", marginTop: "2%" }}
+            value = {price}
+            onChange = {(val) => {
+              setPrice(val.target.value)
+            }}
           />
 
           <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
@@ -208,6 +274,10 @@ export default function CreateForm() {
             className={classes.text}
             placeholder="Enter details about the party"
             style={{ marginBottom: "5%", marginTop: "2%" }}
+            value = {about}
+            onChange = {(val) => {
+              setAbout(val.target.value);
+            }}
           />
 
           <Typography variant="subtitle2" style={{ fontWeight: "600" }}>
@@ -215,10 +285,10 @@ export default function CreateForm() {
           </Typography>
 
           <div>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Public" onClick = {onTypeClick}>
               Public
             </Button>
-            <Button variant="outlined" className={classes.button}>
+            <Button variant="outlined" className={classes.button} value = "Private" onClick = {onTypeClick}>
               Private
             </Button>
           </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Modal,
   TextField,
@@ -77,6 +78,9 @@ export default function ForgotPassword() {
   const [open1, setOpen1] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
 
+  const [email, setEmail] = React.useState("");
+  const [token, setToken] = React.useState("");
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -101,11 +105,37 @@ export default function ForgotPassword() {
   };
 
   const onSendClick = () => {
-    handleClose();
-    handleOpen1();
+    const resetPasswordURL = "https://rooftop-api.herokuapp.com/auth/sendPasswordResetEmail"
+
+    const userEmail = {
+      "email": email
+    }
+
+
+    axios.post(resetPasswordURL, userEmail)
+    .then(request => {
+      console.log(request);
+      handleClose();
+      handleOpen1();
+    })
+    .catch(e => {
+      console.log(e)
+      if (e.status == 200){
+        console.log(e.statusText)
+      }
+
+    });
+    
+    
   };
 
   const onNextClick = () => {
+    const verificationTokenURL = "https://rooftop-api.herokuapp.com/auth/verifyPasswordResetToken"
+    
+    const token = {
+      "passwordResetToken": token,
+    }
+    
     handleClose1();
     handleOpen2();
   };
@@ -141,6 +171,8 @@ export default function ForgotPassword() {
           placeholder="Type your email address here"
           className={classes.text}
           style={{ marginTop: "2%" }}
+          value = {email}
+          onChange={val => setEmail(val.target.value)}
         />
         <Button
           variant="outlined"

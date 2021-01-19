@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import LoginImage from "../../../assets/Image/Login.png";
 import Logo from "../../../assets/Icons/Icon.svg";
 import {
@@ -8,6 +9,7 @@ import {
   makeStyles,
   Button,
 } from "@material-ui/core";
+import {useParams} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -57,8 +59,58 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+
+export default function Login(props) {
   const classes = useStyles();
+  
+  const [error, setError] = React.useState(false)
+  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPass, setConfirmPass] = React.useState("");
+  //const [token, setToken] = React.useState("");
+
+  const {history} = props;
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    const URL = "https://rooftop-api.herokuapp.com/auth/"
+    const verifySignupURL = "https://rooftop-api.herokuapp.com/auth/verifySignup"
+    const sendEmailURL = "https://rooftop-api.herokuapp.com/auth/sendSignupVerificationEmail";
+
+    const user = {
+      "username": username,
+      "password": password,
+      "email": email,
+    };
+
+    const verifyEmail = {
+      "email": email,
+    }
+
+
+
+    if(password == confirmPass){
+      //console.log(adecodedToken);
+      //console.log(isExpired);
+      
+      axios.post(sendEmailURL, verifyEmail)
+      .then((res, req) => {
+        console.log(res);
+        console.log(props);
+        console.log(req);
+        
+      }).catch (e => console.log(e));
+      
+     
+
+    }
+    else{
+      setError(true)
+    }
+  }
+
   return (
     <Grid container justify="center" alignItems="center">
       <Grid
@@ -93,6 +145,8 @@ export default function Login() {
             placeholder="Type your username here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            value = {username}
+            onChange={(val) => setUsername(val.target.value)}
           />
           <br />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -104,6 +158,10 @@ export default function Login() {
             placeholder="Type your email address here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            value = {email}
+            onChange={(val) => {
+              setEmail(val.target.value);
+            }}
           />
           <br />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -111,10 +169,16 @@ export default function Login() {
           </Typography>{" "}
           <br />
           <TextField
+            error = {error}
             variant="outlined"
             placeholder="Type your password here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            onChange={(val) => {
+              setPassword(val.target.value)
+              setError(false);
+            }}
+            helperText = {error? "Passwords don't match": ""}
           />
           <br />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -126,11 +190,15 @@ export default function Login() {
             placeholder="Type your password here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            onChange={(val) => {
+              setError(false);
+              setConfirmPass(val.target.value);
+            }}
           />
           <br />
           <Grid item>
             <div align="center">
-              <Button variant="outlined" className={classes.Button}>
+              <Button variant="outlined" className={classes.Button} onClick = {onSubmit}>
                 Sign up
               </Button>
             </div>

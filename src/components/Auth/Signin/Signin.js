@@ -1,4 +1,5 @@
 import React from "react";
+import axios from 'axios';
 import SignupImage from "../../../assets/Image/Signup.png";
 import Logo from "../../../assets/Icons/Icon.svg";
 import Facebook from "../../../assets/Icons/Facebook.svg";
@@ -68,8 +69,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signup() {
+
+
+export default function Signup(props) {
   const classes = useStyles();
+  
+  const [username, setUserName] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const {history} = props;
+  
+  
+
+  const onChangeUsername = (val) => {
+    setUserName(val.target.value); //set value to target in text field
+  }
+
+  const onChangePassword = (val) => {
+    setPassword(val.target.value); //set value to target in text field
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const URL = "https://rooftop-api.herokuapp.com/auth/login/";
+    
+    const user = {
+      "username": username,
+      "password": password
+    };
+
+
+    axios.post(URL, user)
+          .then(response => {
+            console.log(response)
+            history.push("/home")
+          })
+          .catch(e => console.log(e));
+
+  
+}
+
   return (
     <Grid container justify="center" alignItems="center">
       <Grid
@@ -117,11 +155,13 @@ export default function Signup() {
             placeholder="Type your username here"
             className={classes.text}
             style={{ marginTop: "2%" }}
+            value = {username}
+            onChange={onChangeUsername}
           />
           <br />
           <Typography variant="body2" className={classes.label}>
             Password
-          </Typography>{" "}
+          </Typography> 
           <br />
           <div align="right" style={{ marginTop: "-20px" }}>
             <ForgotPassword style={{ marginTop: "-20px" }} />
@@ -131,11 +171,13 @@ export default function Signup() {
             placeholder="Type your password here"
             className={classes.text}
             style={{ marginTop: "2%" }}
+            value = {password}
+            onChange={onChangePassword}
           />
           <br />
           <Grid item>
             <div align="center">
-              <Button variant="outlined" className={classes.Button}>
+              <Button variant="outlined" className={classes.Button} onClick = {onSubmit}>
                 Sign In
               </Button>
             </div>
