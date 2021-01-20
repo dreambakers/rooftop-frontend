@@ -14,6 +14,7 @@ import Close from "../../../assets/Icons/Cross.svg";
 import SendTick from "../../../assets/Icons/resetTick.svg";
 import SendBig from "../../../assets/Icons/sendBig.svg";
 import CloseOutlinedIcon from "@material-ui/icons/CloseOutlined";
+import {passReset, passResetToken, passResetEmail} from '../../connectApi/axiosFunctions';
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -77,6 +78,10 @@ export default function ForgotPassword() {
   const [open1, setOpen1] = React.useState(false);
   const [open2, setOpen2] = React.useState(false);
 
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPass, setConfrimPass] = React.useState("");
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -100,10 +105,6 @@ export default function ForgotPassword() {
     setOpen2(false);
   };
 
-  const onSendClick = () => {
-    handleClose();
-    handleOpen1();
-  };
 
   const onNextClick = () => {
     handleClose1();
@@ -141,11 +142,21 @@ export default function ForgotPassword() {
           placeholder="Type your email address here"
           className={classes.text}
           style={{ marginTop: "2%" }}
+          value = {email}
+          onChange = {val => {
+            setEmail(val.target.value);
+          }}
         />
         <Button
           variant="outlined"
           className={classes.Button}
-          onClick={onSendClick}
+          onClick={(e, Email = {email}) => {
+            let response = passResetEmail(Email);
+            if (response.status == 200){
+              handleClose();
+              handleOpen1();
+            }
+          }}
         >
           Send
           <img src={Send} style={{ marginLeft: "5px", width: "16px" }} />
@@ -158,7 +169,6 @@ export default function ForgotPassword() {
     //height = 42%  width = 43%
     <Paper className={classes.Paper}>
       <div align="right" style={{ margin: "5px" }}>
-        {/* <img src={Close} style={{ width:"1vw"}} onClick ={onCloseClick} /> */}
         <IconButton onClick={onCloseClick}>
           <CloseOutlinedIcon />
         </IconButton>
@@ -204,6 +214,10 @@ export default function ForgotPassword() {
           placeholder="Type your password here"
           className={classes.text}
           style={{ marginTop: "2%" }}
+          value = {password}
+          onChange = {val => {
+            setPassword(val.target.value);
+          }}
         />
         <br />
         <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -215,9 +229,17 @@ export default function ForgotPassword() {
           placeholder="Type your password here"
           className={classes.text}
           style={{ marginTop: "0%" }}
+          value = {confirmPass}
+          onChange = {val =>{
+            setConfrimPass(val.target.value);
+          }}
         />
         <br />
-        <Button variant="outlined" className={classes.Button}>
+        <Button variant="outlined" className={classes.Button}
+        onClick = {(e, Password = {password}, ConfirmPass = {confirmPass}) =>{
+          passReset(password)
+        }}
+        >
           Reset Password
         </Button>
       </div>

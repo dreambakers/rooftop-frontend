@@ -8,6 +8,7 @@ import {
   makeStyles,
   Button,
 } from "@material-ui/core";
+import {signUp} from "../../connectApi/axiosFunctions"
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -57,8 +58,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+export default function Signup(props) {
   const classes = useStyles();
+
+  const [error, setError] = React.useState(false)
+  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const [confirmPass, setConfirmPass] = React.useState("");
+
+  const {history} = props;
   return (
     <Grid container justify="center" alignItems="center">
       <Grid
@@ -93,6 +102,8 @@ export default function Login() {
             placeholder="Type your username here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            value = {username}
+            onChange={(val) => setUsername(val.target.value)}
           />
           <br />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -104,6 +115,10 @@ export default function Login() {
             placeholder="Type your email address here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            value = {email}
+            onChange={(val) => {
+              setEmail(val.target.value);
+            }}
           />
           <br />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -111,10 +126,16 @@ export default function Login() {
           </Typography>{" "}
           <br />
           <TextField
+            error = {error}
             variant="outlined"
             placeholder="Type your password here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            onChange={(val) => {
+              setPassword(val.target.value)
+              setError(false);
+            }}
+            helperText = {error? "Passwords don't match": ""}
           />
           <br />
           <Typography variant="body2" style={{ fontWeight: "600" }}>
@@ -126,11 +147,24 @@ export default function Login() {
             placeholder="Type your password here"
             className={classes.text}
             style={{ marginTop: "0%" }}
+            onChange={(val) => {
+              setError(false);
+              setConfirmPass(val.target.value);
+            }}
           />
           <br />
           <Grid item>
             <div align="center">
-              <Button variant="outlined" className={classes.Button}>
+              <Button variant="outlined" 
+              className={classes.Button} 
+              onClick={(e,userName={username},Password={password},Email={email}, ConPass = {confirmPass}) => {
+                  if (password == ConPass){                  
+                    signUp(userName,Password,Email)
+                    history.push('/home')
+                  }else{
+                    setError(true);
+                  }
+                }}>
                 Sign up
               </Button>
             </div>

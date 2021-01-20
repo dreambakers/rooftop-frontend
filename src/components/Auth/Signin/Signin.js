@@ -11,7 +11,13 @@ import {
   Button,
 } from "@material-ui/core";
 import ForgotPassword from "./ForgotPassword.js";
+import {login, googleAuth, facebookAuth} from "../../connectApi/axiosFunctions"
 
+// login("Test","test123")
+// sendSignupVE('valid@email.com')
+// changePass('test123','test1234')
+// getProfile()
+// updateProfile('test123', "profilePicture=@/home/mhd3v/Downloads/ProGrid (2).png", "Musician", 'validurl.com', 'validurl.com', 'validurl.com', 'validurl.com', 'validurl.com')
 const useStyles = makeStyles((theme) => ({
   form: {
     padding: theme.spacing(0),
@@ -68,8 +74,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Signup() {
+export default function Signup(props) {
   const classes = useStyles();
+
+  const [username, setUserName] = React.useState("");
+  const [password, setPassword] = React.useState("");
+  const {history} = props;
+
   return (
     <Grid container justify="center" alignItems="center">
       <Grid
@@ -93,8 +104,12 @@ export default function Signup() {
             Welcome, Sign in and turn up!
           </Typography>
           <div align="center" style={{ marginTop: "40px" }}>
-            <img src={Facebook} className={classes.icons}></img>
-            <img src={Google} className={classes.icons}></img>
+            <img src={Facebook} className={classes.icons}
+            onClick = {facebookAuth}
+            ></img>
+            <img src={Google} className={classes.icons}
+            onClick = {googleAuth}
+            ></img>
             <Typography
               variant="subtitle2"
               style={{
@@ -117,6 +132,8 @@ export default function Signup() {
             placeholder="Type your username here"
             className={classes.text}
             style={{ marginTop: "2%" }}
+            value = {username}
+            onChange = {(val) => setUserName(val.target.value)}
           />
           <br />
           <Typography variant="body2" className={classes.label}>
@@ -131,11 +148,18 @@ export default function Signup() {
             placeholder="Type your password here"
             className={classes.text}
             style={{ marginTop: "2%" }}
+            value = {password}
+            onChange = {(val) => setPassword(val.target.value)}
           />
           <br />
           <Grid item>
             <div align="center">
-              <Button variant="outlined" className={classes.Button}>
+              <Button variant="outlined" className={classes.Button} 
+              onClick={(e,userName={username},Password={password}) => {
+                  login(userName,Password)
+                  history.push("/home")
+                }
+              }>
                 Sign In
               </Button>
             </div>
@@ -178,7 +202,7 @@ export default function Signup() {
                 <Button
                   variant="outlined"
                   className={classes.signup}
-                  href="/signup"
+                  href="/signup"                  
                 >
                   Sign Up
                 </Button>
